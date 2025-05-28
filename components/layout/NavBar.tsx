@@ -1,8 +1,8 @@
-import { MapPin, Search, UserRound } from "lucide-react";
+import { MapPin, UserRound } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-import { Input } from "@/components/ui/input";
+import SearchButton from "../SearchButton";
 
 const NavBar = () => {
     return (
@@ -35,14 +35,7 @@ const NavBar = () => {
                     <UserRound size={20} />
                 </div>
             </div>
-            <div className="flex w-full items-center gap-2 rounded-md bg-white px-3">
-                <Search className="text-primary-foreground h-5 w-5" />
-                <Input
-                    placeholder="busque pela loja ou culinária"
-                    type="search"
-                    className="text-primary-foreground border-0 bg-white text-sm font-medium shadow-none focus:border-0 focus:ring-0"
-                />
-            </div>
+            <SearchButton />
         </nav>
     );
 };
