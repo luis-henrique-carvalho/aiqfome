@@ -47,13 +47,13 @@ const RestaurantCard = ({
                 <div className="flex items-center gap-2">
                     <div className={`flex items-center gap-1 ${color}`}>
                         <Icon />
-                        <span>{label}</span>
+                        <p className="font-bold">{label}</p>
                     </div>
                     <div className="flex items-center">
                         <StarIcon />{" "}
-                        <p className="text-sm text-gray-500">
+                        <span className="text-sm font-bold text-gray-500">
                             {rating.toFixed(1)}
-                        </p>
+                        </span>
                     </div>
                 </div>
             </div>
