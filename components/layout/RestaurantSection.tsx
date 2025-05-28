@@ -21,6 +21,7 @@ export default function RestaurantSection({
                 restaurants.map((restaurant) => (
                     <RestaurantCard
                         key={restaurant.id}
+                        id={restaurant.id}
                         name={restaurant.name}
                         imageUrl={restaurant.imageUrl}
                         rating={restaurant.rating}

@@ -19,3 +19,15 @@ export async function fetchRestaurants(query?: string): Promise<Restaurant[]> {
 
     return response.json();
 }
+
+export async function fetchRestaurantById(
+    id: number | string,
+): Promise<Restaurant> {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${id}`);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch restaurant");
+    }
+
+    return response.json();
+}
