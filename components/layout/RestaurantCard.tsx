@@ -12,8 +12,12 @@ interface RestaurantCardProps {
     deliveryFee: number;
 }
 
-const RestaurantCard = ({ name, imageUrl, rating, deliveryFee }: RestaurantCardProps) => {
-
+const RestaurantCard = ({
+    name,
+    imageUrl,
+    rating,
+    deliveryFee,
+}: RestaurantCardProps) => {
     function getDeliveryInfo(deliveryFee: number) {
         const isFree = deliveryFee === 0;
 
@@ -29,7 +33,7 @@ const RestaurantCard = ({ name, imageUrl, rating, deliveryFee }: RestaurantCardP
     const { Icon, label, color } = getDeliveryInfo(deliveryFee);
 
     return (
-        <div className="flex h-[72px] gap-4 bg-muted rounded-xl">
+        <div className="bg-muted flex h-[72px] gap-4 rounded-xl">
             <Image
                 src={imageUrl}
                 alt={name}
@@ -40,13 +44,16 @@ const RestaurantCard = ({ name, imageUrl, rating, deliveryFee }: RestaurantCardP
 
             <div className="flex flex-col justify-center">
                 <h3 className="text-base font-bold">{name}</h3>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                     <div className={`flex items-center gap-1 ${color}`}>
                         <Icon />
                         <span>{label}</span>
                     </div>
                     <div className="flex items-center">
-                        <StarIcon /> <p className="text-sm text-gray-500 ">{rating.toFixed(1)}</p>
+                        <StarIcon />{" "}
+                        <p className="text-sm text-gray-500">
+                            {rating.toFixed(1)}
+                        </p>
                     </div>
                 </div>
             </div>
