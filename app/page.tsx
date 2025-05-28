@@ -21,7 +21,7 @@ export default function Home() {
       name: "McDonald's",
       imageUrl: "/restaurants/mcdonalds.png",
       rating: 4.4,
-      deliveryFee: 3.99,
+      deliveryFee: 0,
     },
     {
       name: "Subway",

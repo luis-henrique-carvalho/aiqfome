@@ -1,6 +1,9 @@
-import { BadgeCheck, Truck } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+
+import { ReactComponent as BikeIcon } from "@/public/icons/bike.svg";
+import { ReactComponent as DeliveryIcon } from "@/public/icons/delivery.svg";
+import { ReactComponent as StarIcon } from "@/public/icons/star.svg";
 
 interface RestaurantCardProps {
     name: string;
@@ -14,14 +17,16 @@ const RestaurantCard = ({ name, imageUrl, rating, deliveryFee }: RestaurantCardP
     function getDeliveryInfo(deliveryFee: number) {
         const isFree = deliveryFee === 0;
 
+        const Icon = isFree ? BikeIcon : DeliveryIcon;
+
         return {
-            icon: isFree ? BadgeCheck : Truck,
-            label: isFree ? "Grátis" : `R$ ${deliveryFee.toFixed(2)}`,
-            color: isFree ? "text-green-600" : "text-primary",
+            Icon,
+            label: isFree ? "grátis" : `R$${deliveryFee.toFixed(2)}`,
+            color: isFree ? "text-success" : "text-primary",
         };
     }
 
-    const deliveryInfo = getDeliveryInfo(deliveryFee);
+    const { Icon, label, color } = getDeliveryInfo(deliveryFee);
 
     return (
         <div className="flex h-[72px] gap-4 bg-muted rounded-xl">
@@ -30,17 +35,20 @@ const RestaurantCard = ({ name, imageUrl, rating, deliveryFee }: RestaurantCardP
                 alt={name}
                 height={72}
                 width={72}
+                className="rounded-xl"
             />
-            <div className="flex flex-col justify-center">
-                <h3 className="text-lg font-bold">{name}</h3>
-                <div className="flex gap-2 items-center">
-                    <div className={`flex items-center gap-1 ${deliveryInfo.color}`}>
-                        <deliveryInfo.icon className="w-4 h-4" />
-                        <span>{deliveryInfo.label}</span>
-                    </div>
-                    <p className="text-sm text-gray-500">Avaliação: {rating.toFixed(1)}</p>
-                </div>
 
+            <div className="flex flex-col justify-center">
+                <h3 className="text-base font-bold">{name}</h3>
+                <div className="flex gap-2 items-center">
+                    <div className={`flex items-center gap-1 ${color}`}>
+                        <Icon />
+                        <span>{label}</span>
+                    </div>
+                    <div className="flex items-center">
+                        <StarIcon /> <p className="text-sm text-gray-500 ">{rating.toFixed(1)}</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
